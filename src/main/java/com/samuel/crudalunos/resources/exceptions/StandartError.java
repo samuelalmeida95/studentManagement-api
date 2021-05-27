@@ -11,4 +11,6 @@ public class StandartError {
     private Integer status;
     private Long timestamp;
     private String message;
+
 }
+
