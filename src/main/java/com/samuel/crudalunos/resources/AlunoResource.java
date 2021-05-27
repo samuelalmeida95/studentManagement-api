@@ -56,5 +56,4 @@ public class AlunoResource {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }
-
 }
