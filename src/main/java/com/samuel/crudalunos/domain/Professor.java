@@ -20,7 +20,6 @@ public class Professor implements Serializable{
     @GeneratedValue
     private Integer id;
     private String nome;
-
     private String siape;
     private String senha;
 }
