@@ -18,9 +18,9 @@ public class ProfessorService {
 
     public Professor findById(Integer id) {
         Optional<Professor> obj = repository.findById(id);
+        
         return obj.orElseThrow(() -> new ObjectNotFoundException(
                 "Objeto não encontrado Id: " + id + " Tipo: " + Professor.class.getName()));
-
     }
 
     public List<Professor> findAll() {
@@ -29,6 +29,7 @@ public class ProfessorService {
 
     public Professor create(Professor professor) {
         professor.setId(null);
+
         return repository.save(professor);
     }
 
@@ -36,11 +37,13 @@ public class ProfessorService {
         Professor professor = findById(id);
         professor.setNome(prof.getNome());
         professor.setSenha(prof.getSenha());
+
         return repository.save(professor);
     }
 
     public void delete(Integer id) {
         findById(id);
+
         repository.deleteById(id);
     }
 }
