@@ -25,35 +25,47 @@ public class ProfessorResource {
     @Autowired
     private ProfessorService service;
 
-    @GetMapping(value = "/{id}") //listar por id
+    @GetMapping(value = "/{id}") 
     public ResponseEntity<Professor> findById(@PathVariable Integer id) {
         Professor obj = this.service.findById(id);
+
         return ResponseEntity.ok().body(obj);
-    } 
-    
-    @GetMapping //listar todos
+    }
+
+    @GetMapping 
     public ResponseEntity<List<Professor>> findAll() {
         List<Professor> professores = this.service.findAll();
+
         return ResponseEntity.ok().body(professores);
     }
 
-    @PostMapping //Adicionar um professor
-    public ResponseEntity<Professor> create (@RequestBody Professor professor){
+    @PostMapping 
+    public ResponseEntity<Professor> create(@RequestBody Professor professor) {
         Professor newProf = service.create(professor);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newProf.getId())
-                .toUri();
-                return ResponseEntity.created(uri).build();
+
+        URI uri = ServletUriComponentsBuilder
+        .fromCurrentRequest()
+        .path("/{id}")
+        .buildAndExpand(newProf.getId())
+        .toUri();
+
+        return ResponseEntity.created(uri).build();
     }
 
-    @PutMapping(value = "/{id}") //alterar por id 
-    public ResponseEntity<Professor> update (@PathVariable Integer id, @RequestBody Professor professor){
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Professor> update(
+        @PathVariable Integer id, 
+        @RequestBody Professor professor) {
+
         Professor newProf = service.update(id, professor);
+
         return ResponseEntity.ok().body(newProf);
     }
 
-    @DeleteMapping(value = "/{id}") //deletar por id
-    public ResponseEntity<Void> delete(@PathVariable Integer id){
+    @DeleteMapping(value = "/{id}") 
+    public ResponseEntity<Void> delete(@PathVariable Integer id) {
         service.delete(id);
+        
         return ResponseEntity.noContent().build();
     }
-}   
+}
