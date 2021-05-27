@@ -11,16 +11,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data //gerar get, set e construtor para os campos necessários
-@NoArgsConstructor //gerar um construtor vazio
-@AllArgsConstructor //gerar um construtor com argumentos
-
-@Entity //a classe é uma entidade do banco jpa
+@Data
+@NoArgsConstructor 
+@AllArgsConstructor 
+@Entity 
 public class Aluno implements Serializable{
 
-   /*  private static final long serialVersionUID = 1L; */
+    private static final long serialVersionUID = 1L; 
 
-    @Id //representa chave primaria da entidade no banco
+    @Id 
     @GeneratedValue
     private Integer id;
 
