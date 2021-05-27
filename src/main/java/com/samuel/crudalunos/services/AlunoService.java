@@ -18,7 +18,8 @@ public class AlunoService {
 
     public Aluno findById(Integer id) {
         Optional<Aluno> obj = repository.findById(id);
-        return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado Id: " + id + " Tipo: " + Aluno.class.getName()));
+        return obj.orElseThrow(() -> new ObjectNotFoundException(
+                "Objeto não encontrado Id: " + id + " Tipo: " + Aluno.class.getName()));
     }
 
     public List<Aluno> findAll() {
